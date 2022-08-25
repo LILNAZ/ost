@@ -1,0 +1,23 @@
+Future Plans for next release:
+- Big ideas:
+	- Docker container to make it more plug and play as well as it being identical on each run and on multiple machines.
+	- Live ISO version?
+- Improvements:
+	- Extracting archives and looking at the files inside
+	- More sophisticated scanning of the files especially for all the non-singed files
+	- Use Assembyline4 to check and validate code (https://github.com/CybercentreCanada/assemblyline-base)
+
+
+- Flow for: Open Source Tvätt - Signature Analysis of Code, Hash, And Malware (OST SACHAM)
+	1. python start script
+		- takes user inputs
+		- verify hash
+		- builds container
+		- start container (series? or parallel?)
+	2. signature container
+		- runs the scripts similar to it works today but with Extracting functionality
+	3. Script scan container
+		- analyses script files
+	4. Bad code container
+		- analyses malware signature
+	6. wait for user to look at results before killing container

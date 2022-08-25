@@ -1,0 +1,30 @@
+# Release 0003 - 2022-08-25
+
+## OpenSourceTvatt.py - V0003
+
+- Minor bug fixes
+
+# Release 0002 - 2022-07-14
+
+To test the integrity of the build run the following command in the root of the script folder "sha256sum -c scriptBuild_0002.sha256sum" so the path to OpenSourceTvatt.py is = ./OpenSourceTvatt.py
+
+## OpenSourceTvatt.py - V0002
+
+- rebuilt in Python
+- Added option for single file checking on Microsoft and Red Hat.
+- fixed bug where osslsigncode 2.3.0 on Fedora 36 did not put failed to stderr.
+- Improved granularity of results with osslsigncode 2.3.0
+- Added check of .efi as an important file type (MS and VMWare)
+- Added folder output input file and time, this enables you to run the same script with multiple times with different input files or same att different times.
+- Added clear results where if you get any errors or warnings it prompts to look at them
+- fixed bug in RHEL where it did not check error in rpm signings
+- Improved singing subjects on Red Hat, now checks what file singed the packages instead of listing all keys that could sign it
+- Added colored output.
+
+## setup.sh - V1.2
+
+- Fixed dependencies for VMWare tools on Fedora 36.
+- Made the Red Hat signing key check not whitespace sensitive.
+- Installed the Rat Key if not found
+- Added results of the setup.
+- Added colored output.
