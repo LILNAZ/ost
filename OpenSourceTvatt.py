@@ -66,6 +66,7 @@ if __name__ == '__main__':
 
 	# Create folder structure
 	workingDir = setupDirs(currentUnixTime, inputFile, isMicrosoft, isRHEL, isVmWare)
+	CsvOutputDir="./output/"
 
 	# Setup of classes
 	# hash
@@ -168,9 +169,8 @@ if __name__ == '__main__':
 		vmwareMicrosoftAndOvf = verifyVmWareSignatures(workingDir, inputFile, vmwareMicrosoftAndOvf)
 
 	# Create CSV
-	outputDir="."
 	
-	writeCsvReport(buildVersion, currentUnixTime, outputDir, inputFile, hashResults, microsoftCodeSign, rpmSigning, vmwareMicrosoftAndOvf)
+	writeCsvReport(buildVersion, currentUnixTime, CsvOutputDir, inputFile, hashResults, microsoftCodeSign, rpmSigning, vmwareMicrosoftAndOvf)
 
 	statusOfTheResults(workingDir, hashResults, microsoftCodeSign, rpmSigning, vmwareMicrosoftAndOvf)
 
