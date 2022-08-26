@@ -21,3 +21,10 @@ Future Plans for next release:
 	4. Bad code container
 		- analyses malware signature
 	6. wait for user to look at results before killing container
+
+ToDo
+1. Containers
+2. Find software and functions for:
+	a. Script Analysis
+	b. Bad code / Malware Analysis
+3. rebuild code to work in modular containers
