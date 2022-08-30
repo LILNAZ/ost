@@ -1,4 +1,4 @@
-Future Plans for next release:
+# Future Plans for next release:
 - Big ideas:
 	- Docker container to make it more plug and play as well as it being identical on each run and on multiple machines.
 	- Live ISO version?
@@ -22,7 +22,8 @@ Future Plans for next release:
 		- analyses malware signature
 	6. wait for user to look at results before killing container
 
-ToDo
+# ToDo
+
 1. Containers
 2. Find software and functions for:
 	a. Script Analysis
