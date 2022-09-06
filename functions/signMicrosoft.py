@@ -75,8 +75,8 @@ def verifyStatusOfMicrosoftSignatures (microsoftCodeSign):
 	# Mix of singed and unsigned
 	elif totalNumberOfSingedFiles != 0 and totalNumberOfUnSingedFiles != 0:
 		printWarn(str (totalNumberOfSingedFiles) + " file(s) where singed" + str(totalNumberOfUnSingedFiles) + " file(s) where not signed")
-		printWarn("Out of the unsigned file(s) " + microsoftCodeSign.unrecognized.count + " where of an unrecognized file type and " + microsoftCodeSign.unsigned.count + " where unsigned")
-		printWarn("Out of the singed file(s) " + microsoftCodeSign.singedNotFullChain.count + " could full trust chain not be established and " + microsoftCodeSign.singedTrusted.count + " file(s) could full trust chain be established")
+		printWarn("Out of the unsigned file(s) " + str(microsoftCodeSign.unrecognized.count) + " where of an unrecognized file type and " + str(microsoftCodeSign.unsigned.count) + " where unsigned")
+		printWarn("Out of the singed file(s) " + str(microsoftCodeSign.singedNotFullChain.count) + " could full trust chain not be established and " + str(microsoftCodeSign.singedTrusted.count) + " file(s) could full trust chain be established")
 
 		if microsoftCodeSign.singedNotFullChain.count != 0:
 			printInfo("About the files with not full trust chain. This is most likely Microsoft problem, as they do not for some reason publish code sining CA certs and for some other cool Microsoft reason have multiple CA certs named the same :)")
