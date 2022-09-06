@@ -3,6 +3,7 @@
 	- Docker container to make it more plug and play as well as it being identical on each run and on multiple machines.
 	- Live ISO version?
 - Improvements:
+	- analyses everything in a folder (same as iso and future zip)
 	- Extracting archives and looking at the files inside
 	- More sophisticated scanning of the files especially for all the non-singed files
 	- Use Assembyline4 to check and validate code (https://github.com/CybercentreCanada/assemblyline-base)
