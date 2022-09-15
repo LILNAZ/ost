@@ -11,15 +11,63 @@
 
 - Flow for: Open Source Tvätt - Signature Analysis of Code, Hash, And Malware (OST SACHAM)
 	1. python start script
-		- takes user inputs
-		- verify hash
-		- builds container
-		- start container (series? or parallel?)
+		INPUT
+			scan type
+				file
+				folder
+			input file
+			type
+				Microsoft
+				Red Hat
+				Ubuntu
+				VMWare
+			hash
+		OUTPUT
+			result.csv
+		STEPS
+			- take and validate user inputs
+			- verify hash
+			- generate hash
+			- prepare for containers
+				- mounts iso (if applicable)
+				- create relevant dirs
+				- copy files to working dirs
+			- builds container
+			- start container (series? or parallel?)
+			- gather results from all containers and generate result.csv
 	2. signature container
-		- runs the scripts similar to it works today but with Extracting functionality
+		INPUT
+			scan folder
+			type
+				Microsoft		(microsoft Container [Fedora])
+				Red Hat			(RPM container [Fedora])
+				Ubuntu			(deb container [Ubuntu]+[Microsoft])
+				VMWare			(?)
+			var WORKIGNDDIR = ./output/{type}/{file name}/{date}/
+		OUTPUT
+			signature_result.csv
+			WORKIGNDDIR/signature.*
+		STEPS
+			- runs the scripts similar to it works today but with Extracting functionality
+			- generate signature_result.csv
 	3. Script scan container
-		- analyses script files
+		INPUT
+			scan folder
+			var WORKIGNDDIR = ./output/{type}/{file name}/{date}/
+		OUTPUT
+			script_result.csv
+			WORKIGNDDIR/script.*
+		STEPS
+			- analyses script files
+			- generate script_result.csv
 	4. Bad code container
+		INPUT
+			scan folder
+			var WORKIGNDDIR = ./output/{type}/{file name}/{date}/
+		OUTPUT
+			malware_result.csv
+			WORKIGNDDIR/malware.*
+		STEPS
 		- analyses malware signature
 	6. wait for user to look at results before killing container
 
