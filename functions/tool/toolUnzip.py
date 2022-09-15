@@ -2,45 +2,67 @@
 
 # imports of libraries
 import os
+import subprocess
 
 from .toolGetFileType import *
-
+from .toolColoredOutput import *
 
 def extractFile (inputFile, outputDir):
+	# verify if output directory exist
+	createOutputDir(outputDir)
+
+	# Get the file magic number form the input file
 	magic = getFileMagic(inputFile)
 
 	if magic == "application/x-7z-compressed":
-		print ("OK!1")
-	elif magic == "application/x-bzip2":
-		print ("OK!2")
-	elif magic == "application/gzip":
-		print ("OK!3")
-	elif magic == "application/x-tar":
-		print ("OK!4")
-	elif magic == "application/x-xz":
-		print ("OK!5")
+		SevenZExtract(inputFile, outputDir)
+
 	elif magic == "application/zip":
-		print ("OK!6")
+		zipExtract(inputFile, outputDir)
+
+	elif magic == "application/x-bzip2":
+		tarExtract(inputFile, outputDir)
+
+	elif magic == "application/gzip":
+		tarExtract(inputFile, outputDir)
+
+	elif magic == "application/x-tar":
+		tarExtract(inputFile, outputDir)
+
+	elif magic == "application/x-xz":
+		tarExtract(inputFile, outputDir)
+
+	elif magic == "application/x-rar":
+		rarExtract(inputFile, outputDir)
+
 	else:
-		print ("NOK!")
+		printWarn("Not a file that could be extracted!")
+
 
 def SevenZExtract (SevenZFile, outputDir):
-	return
-
-def bzip2Extract (bz2File, outputDir):
-	return
-
-def gzipExtract (gzipFile, outputDir):
-	return
-
-def tarExtract (tarFile, outputDir):
-	return
-
-def xzExtract (xzFile, outputDir):
-	return
+	sevenZoutpath = "-o" + outputDir
+	cmd = ['7z', 'x', SevenZFile, '-C', sevenZoutpath]
+	proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = proc.communicate()
 
 def zipExtract (zipFile, outputDir):
-	return
+	cmd = ['unzip', zipFile, '-d', outputDir]
+	proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = proc.communicate()
+
+def tarExtract (tarFile, outputDir):
+	cmd = ['tar', '-xf', tarFile, '-C', outputDir]
+	proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = proc.communicate()
+
+def rarExtract (rarFile, outputDir):
+	cmd = ['rar', 'x', rarFile, outputDir]
+	proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = proc.communicate()
+
+
+def createOutputDir (outputDir):
+	os.makedirs(outputDir, exist_ok=True)
 
 
 def CleanExtractedFiles (extractedFilesDir):

@@ -27,7 +27,7 @@ info='\033[1m'			# BOLD
 #download and update required packages
 echo -e "${info}INFO:${Color_Off} Installing and updating required packages"
 sudo yum update
-sudo yum install coreutils osslsigncode ncurses-compat-libs python3 ca-certificates
+sudo yum install coreutils osslsigncode ncurses-compat-libs python3 ca-certificates tar p7zip-full unzip unrar
 #coreutils contains sha256sum and sha512sum
 warnCount=$(expr $warnCount + $?)
 
