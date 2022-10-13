@@ -24,6 +24,9 @@ ok='\033[1;32m'			# BOLD Green
 warn='\033[1;33m'		# BOLD Yellow
 info='\033[1m'			# BOLD
 
+echo -e "${info}INFO:${Color_Off} Setting all shell script to have executable bit"
+find . -iname "*.sh" -exec chmod +x {} \;
+
 #download and update required packages
 echo -e "${info}INFO:${Color_Off} Installing and updating required packages"
 sudo yum update
