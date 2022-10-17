@@ -18,29 +18,46 @@ def getMicrosoftSignatures (inputFile, microsoftCodeSign):
 	output, error = proc.communicate()
 
 	# Categorize the output and set file path to right corresponding file
+	# All OK - Full trust chain
 	if re.search(r'Succeeded', output.decode("UTF-8")) or re.search(r'Succeeded', error.decode("UTF-8")):
 		osslsigncodeOutputPath = microsoftCodeSign.singedTrusted.report
 		osslsigncodeFilePath = microsoftCodeSign.singedTrusted.files
 		microsoftCodeSign.found = True
 		microsoftCodeSign.singedTrusted.count += 1
 
+	# OK-ish - not full trust chain
 	elif re.search(r'Number of verified signatures', output.decode("UTF-8")) or re.search(r'Number of verified signatures', error.decode("UTF-8")):
 		osslsigncodeOutputPath = microsoftCodeSign.singedNotFullChain.report
 		osslsigncodeFilePath = microsoftCodeSign.singedNotFullChain.files
 		microsoftCodeSign.found = True
 		microsoftCodeSign.singedNotFullChain.count += 1
 
+	# NOT OK - Unrecognized file
 	elif re.search(r'Unrecognized file type', output.decode("UTF-8")) or re.search(r'Unrecognized file type', error.decode("UTF-8")):
 		osslsigncodeOutputPath = microsoftCodeSign.unrecognized.report
 		osslsigncodeFilePath = microsoftCodeSign.unrecognized.files
 		microsoftCodeSign.found = True
 		microsoftCodeSign.unrecognized.count += 1
 
+	# NOT OK - No signature found
 	elif re.search(r'No signature found', output.decode("UTF-8")) or re.search(r'No signature found', error.decode("UTF-8")):
 		osslsigncodeOutputPath = microsoftCodeSign.unsigned.report
 		osslsigncodeFilePath = microsoftCodeSign.unsigned.files
 		microsoftCodeSign.found = True
 		microsoftCodeSign.unsigned.count += 1
+
+	# NOT OK - Signed but invalided due to unmatched PE Checksum
+	elif re.search(r'Invalid signature', output.decode("UTF-8")) or re.search(r'Invalid signature', error.decode("UTF-8")) or re.search(r'MISMATCH!!!!', output.decode("UTF-8")) or re.search(r'MISMATCH!!!!', error.decode("UTF-8")):
+		printError("Found invalided signature in file: " + str(osslsigncodeFilePath))
+		osslsigncodeOutputPath = microsoftCodeSign.unsigned.report
+		osslsigncodeFilePath = microsoftCodeSign.unsigned.files
+		microsoftCodeSign.found = True
+		microsoftCodeSign.unsigned.count += 1
+
+	else:
+		printError("FOUND UNEXPECTED MICROSOFT SIGNING RESULTS PLEASE CHECK LOCAL DIRECTOR FOR DEBUG INFO")
+		osslsigncodeOutputPath = "./DEBUG-OSSLSIGNCODE-NEW-CASE.txt"
+		osslsigncodeFilePath = "./DEBUG-OSSLSIGNCODE-NEW-CASE.files.txt"
 
 	# Save output to file
 	message = "\n-------------------------------------------------\n" + inputFile + "\n-------------------------------------------------\n" + output.decode("UTF-8") + "\n" + error.decode("UTF-8") + "\n"
