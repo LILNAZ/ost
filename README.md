@@ -1,4 +1,4 @@
-# Open Soruce Tvätt - Analysis of Signatures in Code and Hash (OST ASCH)
+# Open Source Tvätt - Analysis of Signatures in Code and Hash (OST ASCH)
 
 ## Setup:
 -------------
