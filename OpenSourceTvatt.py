@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
  
-buildVersion = "0003"
+buildVersion = "0004"
 
 
 # imports of libraries
