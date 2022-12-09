@@ -11,7 +11,9 @@
 		- https://github.com/joxeankoret/pyew
 		- https://github.com/hiddenillusion/AnalyzePE
 	- Use Assembyline4 to check and validate code (https://github.com/CybercentreCanada/assemblyline-base)
-
+	- support of online and offline installation of OST, meaning whole system including OS in a VM environment
+		- .OVA and step-by-step installation
+		- air gapped updater for definition files and so on needs to exist
 
 
 
