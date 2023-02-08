@@ -6,12 +6,32 @@
 	- analyses everything in a folder (same as iso and future zip)
 	- Extracting archives and looking at the files inside
 	- More sophisticated scanning of the files especially for all the non-singed files
-		- https://github.com/VirusTotal/yara-python
+		- https://github.com/VirusTotal/yara-python (IN Assemblyline 4)
 		- https://github.com/keithjjones/malgazer
 		- https://github.com/joxeankoret/pyew
-		- https://github.com/hiddenillusion/AnalyzePE
-		- http://www.openvas.org/ - https://github.com/greenbone/openvas-scanner
-	- Use Assembyline4 to check and validate code (https://github.com/CybercentreCanada/assemblyline-base)
+		- https://github.com/hiddenillusion/AnalyzePE	(Old 10+ years and only python code maybe add as a service?)
+		- http://www.openvas.org/ - https://github.com/greenbone/openvas-scanner (Already works in container should make it work in Assemblyline 4)
+	- Use Assemblyline 4 to check and validate code (https://github.com/CybercentreCanada/assemblyline-base)
+		- Services:
+			- AntiVirus
+			- CAPA
+			- CAPE
+			- Espresso
+			- Extract
+			- Floss
+			- FrankenStrings
+			- JsJaws
+			- MetaPeek
+			- Oletools
+			- PeePDF
+			- TagCheck
+			- Unpacker
+			- ViperMonkey
+			- XLMMacroDeobfuscator
+			- YARA
+		- Community Services
+			- ClamAV
+			- WindowsDefender
 	- support of online and offline installation of OST, meaning whole system including OS in a VM environment
 		- .OVA and step-by-step installation
 		- air gapped updater for definition files and so on needs to exist
@@ -19,7 +39,7 @@
 
 
 
-- Flow for: Open Source Tvätt - Signature Analysis of Code, Hash, And Malware (OST SACHAM)
+- Flow for: Open Source Tvätt - Analysis of Signature Code, Hash, And Malware (OST ASCHAM)
 	1. python start script
 		INPUT
 			scan type
@@ -83,9 +103,12 @@
 
 # ToDo
 
-1. Containers
-2. Find software and functions for:
-	a. Script Analysis
-	b. Bad code / Malware Analysis
-3. rebuild code to work in modular containers
-4. test
+1. Find software and functions for:
+	a. Script Analysis (Done?)
+	b. Bad code / Malware Analysis (Done?)
+2. Containers
+	a. Build the python code to work in containers
+	b. Migrate the containers to Assembly line 4 services
+	c. Port other projects to work in Assembly line 4
+3. ...
+4. Profit
