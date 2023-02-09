@@ -6,11 +6,13 @@
 	- analyses everything in a folder (same as iso and future zip)
 	- Extracting archives and looking at the files inside
 	- More sophisticated scanning of the files especially for all the non-singed files
-		- https://github.com/VirusTotal/yara-python (IN Assemblyline 4)
-		- https://github.com/keithjjones/malgazer
-		- https://github.com/joxeankoret/pyew
-		- https://github.com/hiddenillusion/AnalyzePE	(Old 10+ years and only python code maybe add as a service?)
-		- http://www.openvas.org/ - https://github.com/greenbone/openvas-scanner (Already works in container should make it work in Assemblyline 4)
+		- To use as services
+			- https://github.com/VirusTotal/yara-python (IN Assemblyline 4)
+			- https://github.com/hiddenillusion/AnalyzePE	(Old 10+ years and only python code maybe add as a service?)
+			- http://www.openvas.org/ - https://github.com/greenbone/openvas-scanner (Already works in container should make it work in Assemblyline 4)
+		- Do not think fits this use case
+			- https://github.com/keithjjones/malgazer (Think this is just a machine learning algorithm to classify malware not detect?)
+			- https://github.com/joxeankoret/pyew
 	- Use Assemblyline 4 to check and validate code (https://github.com/CybercentreCanada/assemblyline-base)
 		- Services:
 			- AntiVirus
@@ -32,15 +34,16 @@
 		- Community Services
 			- ClamAV
 			- WindowsDefender
-	- support of online and offline installation of OST, meaning whole system including OS in a VM environment
+	- support of ~~online and~~ offline installation of OST, meaning whole system including OS in a VM environment
 		- .OVA and step-by-step installation
 		- air gapped updater for definition files and so on needs to exist
 
 
-
+## Flow
 
 - Flow for: Open Source Tvätt - Analysis of Signature Code, Hash, And Malware (OST ASCHAM)
 	1. python start script
+		```
 		INPUT
 			scan type
 				file
@@ -65,7 +68,9 @@
 			- builds container
 			- start container (series? or parallel?)
 			- gather results from all containers and generate result.csv
+		```
 	2. signature container
+		```
 		INPUT
 			scan folder
 			type
@@ -80,7 +85,9 @@
 		STEPS
 			- runs the scripts similar to it works today but with Extracting functionality
 			- generate signature_result.csv
+		```
 	3. Script scan container
+		```
 		INPUT
 			scan folder
 			var WORKIGNDDIR = ./output/{type}/{file name}/{date}/
@@ -90,7 +97,9 @@
 		STEPS
 			- analyses script files
 			- generate script_result.csv
+		```
 	4. Bad code container
+		```
 		INPUT
 			scan folder
 			var WORKIGNDDIR = ./output/{type}/{file name}/{date}/
@@ -99,16 +108,18 @@
 			WORKIGNDDIR/malware.*
 		STEPS
 		- analyses malware signature
+		```
 	6. wait for user to look at results before killing container
 
-# ToDo
+## ToDo
 
-1. Find software and functions for:
-	a. Script Analysis (Done?)
-	b. Bad code / Malware Analysis (Done?)
-2. Containers
-	a. Build the python code to work in containers
-	b. Migrate the containers to Assembly line 4 services
-	c. Port other projects to work in Assembly line 4
+1. [x] Find software and functions for:
+	- [x] Script Analysis
+	- [x] Bad code / Malware Analysis
+2. [ ] Containers
+	- [ ] Build the python code to work in containers
+	- [ ] Migrate the containers to Assembly line 4 services
+	- [ ] Port other projects to work in Assembly line 4
 3. ...
-4. Profit
+4. [ ] Profit
+
