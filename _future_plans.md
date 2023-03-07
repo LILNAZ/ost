@@ -38,6 +38,14 @@
 		- .OVA and step-by-step installation
 		- air gapped updater for definition files and so on needs to exist
 
+	- Installation metod
+		- [Ansible](https://docs.ansible.com/ansible/latest/collections/kubernetes/core/index.html)
+		- Security/vuln scan of the docker images with [trivy](https://github.com/aquasecurity/trivy)
+		- [Hardening guide](https://media.defense.gov/2022/Aug/29/2003066362/-1/-1/0/CTR_KUBERNETES_HARDENING_GUIDANCE_1.2_20220829.PDF)
+		- [CIS Benchmark](https://www.cisecurity.org/benchmark/kubernetes)
+			- [CIS tester](https://github.com/aquasecurity/kube-bench)
+			- [Red Team/pentest kubernetes cluster](https://github.com/aquasecurity/kube-hunter)
+		- [Kubernetes set up with ansible](https://github.com/techno-tim/k3s-ansible)
 
 ## Flow
 
