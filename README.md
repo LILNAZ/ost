@@ -1,5 +1,7 @@
 # Open Source Tvätt - Analysis of Signatures in Code and Hash (OST ASCH)
 
+**Currently not maintaind and seen as dead project for now**
+
 ## Setup:
 -------------
 
